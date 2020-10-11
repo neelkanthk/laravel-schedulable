@@ -1,0 +1,32 @@
+{
+    "name": "neelkanthk/laravel-schedulable",
+    "description": "A Laravel package to add scheduling capability in Eloquent models.",
+    "type": "laravel-package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Neelkanth Kaushik",
+            "email": "me.neelkanth@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.2",
+        "laravel/framework": ">=6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Neelkanth\\Laravel\\Schedulable\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Neelkanth\\Laravel\\Schedulable\\Providers\\SchedulableServiceProvider"
+            ],
+            "aliases": {
+                "schedulable": "Neelkanth\\Laravel\\Schedulable\\Facades\\Schedulable"
+            }
+        }
+    }
+}
