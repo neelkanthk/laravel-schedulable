@@ -2,16 +2,22 @@
 
 # Laravel Schedulable
 
-A Laravel package to add scheduling capability in Eloquent models.
+A Laravel package to add scheduling capability in Eloquent models.  
+
+
+There can be many use cases where this package can prove to be a huge time saver for developers.  
+
+Suppose the you are developing a Blog like application which gives the bloggers an option to schedule their content for a future date. Just relax! this package does all the work for you.
+
+Suppose in a E-commerce website, the items in the inventory can be added at any time by the backend team but they can be scheduled to be made available to the customers at a particular date and time.
+
 
 ## Minimum Requirements
 
-#### 1. Laravel 6.0
-#### 2. PHP 7.2
+1. Laravel 6.0  
+2. PHP 7.2
 
-## Installation
-
-#### 1. Install the package via composer:
+## Installation  
 
 ```bash
 composer require neelkanthk/laravel-schedulable
