@@ -48,6 +48,8 @@ class SchedulableScope implements Scope
     /**
      * Add the onlyScheduled extension to the builder.
      * Returns those model(s) whose scheduled date is in future.
+     * 
+     * @param  \Illuminate\Database\Eloquent\Builder  $builder
      * @return void
      */
     protected function onlyScheduled(Builder $builder)
@@ -62,6 +64,8 @@ class SchedulableScope implements Scope
     /**
      * Add the withScheduled extension to the builder.
      * Returns those model(s) along with other models whose scheduled date is in future.
+     * 
+     * @param  \Illuminate\Database\Eloquent\Builder  $builder
      * @return void
      */
     protected function withScheduled(Builder $builder)
