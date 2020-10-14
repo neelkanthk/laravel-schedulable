@@ -7,7 +7,7 @@ A Laravel package to add scheduling capability in Eloquent models.
 
 There can be many use cases where this package can prove to be a huge time saver for developers.  
 
-Suppose the you are developing a Blog like application which gives the bloggers an option to schedule their content for a future date. Just relax! this package does all the work for you.
+Suppose you are developing a Blog like application which gives the bloggers an option to schedule their content for a future date. Just relax! this package does all the work for you.
 
 Suppose in a E-commerce website, the items in the inventory can be added at any time by the backend team but they can be scheduled to be made available to the customers at a particular date and time.
 
@@ -89,7 +89,7 @@ class Post extends Model
 $scheduleAt = Carbon::now()->addDays(10); //Carbon is just an example. You can pass any object which is implementing DateTimeInterface.
 $post = new Post();
 //Add values to other attributes
-$post->scheduleWithoutSaving($scheduleAt); // Returns the current model object without saving it.
+$post->scheduleWithoutSaving($scheduleAt); // Modifies the schedule_at attribute and returns the current model object without saving it.
 $post->schedule($scheduleAt); //Saves the model in the database and returns boolean true or false
 ```
 
@@ -97,7 +97,7 @@ $post->schedule($scheduleAt); //Saves the model in the database and returns bool
 
 ```php
 $post = Post::find(1);
-$post->unscheduleWithoutSaving(); // Returns the current model object without saving it.
+$post->unscheduleWithoutSaving(); // Modifies the schedule_at attribute and returns the current model object without saving it.
 $post->unschedule(); //Saves the model in the database and returns boolean true or false
 ```
 
