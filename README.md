@@ -1,8 +1,15 @@
 ![Laravel Schedulable Logo](https://github.com/neelkanthk/repo_logos/blob/master/LaravelSchedulable_small.png?raw=true)
 
-# Laravel Schedulable
+# Laravel Schedulable [![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fneelkanthk%2Flaravel-schedulable)](https://twitter.com/intent/tweet?text=Laravel%20Schedulable:&url=https%3A%2F%2Fgithub.com%2Fneelkanthk%2Flaravel-schedulable)
 
 A Laravel package to add scheduling capability in Eloquent models.  
+
+![](https://img.shields.io/github/v/release/neelkanthk/laravel-schedulable?style=for-the-badge)
+![](https://img.shields.io/packagist/php-v/neelkanthk/laravel-schedulable.svg?style=for-the-badge)
+![](https://img.shields.io/badge/Laravel-%3E%3D6.0-red?style=for-the-badge)
+![](https://img.shields.io/badge/Tests-Passing-green?style=for-the-badge)
+![](https://img.shields.io/github/issues/neelkanthk/laravel-schedulable?style=for-the-badge)
+![](https://img.shields.io/github/license/neelkanthk/laravel-schedulable?style=for-the-badge)
 
 
 There can be many use cases where this package can prove to be a huge time saver for developers.  
@@ -142,7 +149,7 @@ class PostObserver
 
 ### 4. Fetching data using queries
 
-We will assume below posts table asreference to the following examples:
+We will assume below posts table as reference to the following examples:
 
 | id | title        | created_at          | updated_at | schedule_at         |
 |----|--------------|---------------------|------------|---------------------|
