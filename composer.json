@@ -19,14 +19,24 @@
             "Neelkanth\\Laravel\\Schedulable\\": "src"
         }
     },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0",
+        "orchestra/testbench": "^6.0|^7.0",
+        "doctrine/dbal": "^4.0@dev"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Neelkanth\\Laravel\\Schedulable\\Tests\\": "tests"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
                 "Neelkanth\\Laravel\\Schedulable\\Providers\\SchedulableServiceProvider"
-            ],
-            "aliases": {
-                "schedulable": "Neelkanth\\Laravel\\Schedulable\\Facades\\Schedulable"
-            }
+            ]
         }
+    },
+    "scripts": {
+        "test": "vendor\\bin\\phpunit --testdox"
     }
 }
