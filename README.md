@@ -11,11 +11,11 @@
 
 A Laravel package to add scheduling capability in Eloquent models.  
 
-Some of the uses where this package can be used:  
+Some of the applications where this package can be used:  
 
-Suppose you are developing a Blog like application which gives the bloggers an option to schedule their content for a future date. Just relax! this package does all the work for you.
+1. A Blog like application which allows bloggers to schedule their post to go public on a future date and time.
 
-Suppose in a E-commerce website, the items in the inventory can be added at any time from the admin panel but they can be scheduled to be made available to the customers at a particular date and time.
+2. An E-commerce website where the items in the inventory can be added at any time from the admin panel but they can be scheduled to be made available to the customers at a particular date and time.
 
 
 ## Minimum Requirements
@@ -33,7 +33,7 @@ composer require neelkanthk/laravel-schedulable
 
 #### 1. Create a migration to add ```schedule_at``` column in any table using package's ```scheduleAt();``` method which creates a column with name ```schedule_at```.  
 
-#### If you want to use any other column name then simply use the ```$table->timestamp();``` method provided by Eloquent.
+#### *NOTE:* If you want to use any other column name then simply use the ```$table->timestamp('column_name');``` method.
 
 ```php
 use Illuminate\Database\Migrations\Migration;
@@ -74,7 +74,7 @@ class AddScheduleAtColumnInPosts extends Migration
 
 #### 2. Use the ```Neelkanth\Laravel\Schedulable\Traits\Schedulable``` trait in any Model.  
 
-#### If you have used a custom column name in the migration then you have to specify that column in the Model as shown below.
+#### *NOTE:* If you have used a custom column name in the migration then you have to specify that column in the Model as shown below.
 
 ```php
 use Illuminate\Database\Eloquent\Model;
