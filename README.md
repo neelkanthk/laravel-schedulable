@@ -241,7 +241,7 @@ Route::get('/schedule/post', function () {
 Route::get('/unschedule/post', function () {
 
     // To unschedule a post you have to fetch the scheduled post first.
-    // But since the Schedulable trait is used in App\Post model it will not a fetch a post whose publish_at value is in future.
+    // But becuase the Schedulable trait is used in App\Post model it will not a fetch a post whose schedule_at column value is in future.
     
     $post = App\Post::find(1);  //This will return null for a scheduled post whose id is 1.
     
