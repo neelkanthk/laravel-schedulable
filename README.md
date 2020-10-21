@@ -165,10 +165,10 @@ We will assume below posts table as reference to the following examples:
 |----|--------------|---------------------|------------|---------------------|
 | 1  | Toy Story 1  | 2020-06-01 12:15:00 | NULL       | NULL                |
 | 2  | Toy Story 2  | 2020-08-02 16:10:12 | NULL       | 2020-08-10 10:10:00 |
-| 3  | Toy Story 3  | 2020-10-10 10:00:10 | NULL       | 2020-10-20 00:00:00 |
-| 4  | Terminator 2 | 2020-10-12 00:00:00 | NULL       | 2020-10-22 15:10:17 |
+| 3  | Toy Story 3  | 2020-10-10 10:00:10 | NULL       | 2021-12-20 00:00:00 |
+| 4  | Terminator 2 | 2020-10-12 00:00:00 | NULL       | 2021-11-12 15:10:17 |
 
-Suppose the current timestamp is 2020-10-15 00:00:00.
+__For the following examples, Suppose the current timestamp is 2020-10-15 00:00:00.__
 
 #### 1. Default
 
