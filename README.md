@@ -24,7 +24,7 @@
 
 __*Some example use cases when this package can be useful:*__
 
-1. A Blog like application which allows bloggers to schedule their post to go public on a future date and time.
+1. A Blog type application which allows bloggers to schedule their post to go public on a future date and time.
 
 2. An E-commerce website where the items in the inventory can be added at any time from the admin panel but they can be scheduled to be made available to the customers at a particular date and time.
 
@@ -62,7 +62,7 @@ class AddScheduleAtColumnInPosts extends Migration
         Schema::table('posts', function (Blueprint $table) {
             $table->scheduleAt(); //Using default schedule_at column
 			//or
-            $table->timestamp('publish_at', 0); //Using custom column name
+            $table->timestamp('publish_at', 0)->nullable(); //Using custom column name
         });
     }
 
@@ -104,7 +104,7 @@ class Post extends Model
 
 ```php
 $scheduleAt = Carbon::now()->addDays(10); //Carbon is just an example. You can pass any object which is implementing DateTimeInterface.
-$post = new Post();
+$post = new App\Post();
 //Add values to other attributes
 $post->scheduleWithoutSaving($scheduleAt); // Modifies the schedule_at attribute and returns the current model object without saving it.
 $post->schedule($scheduleAt); //Saves the model in the database and returns boolean true or false
@@ -113,7 +113,7 @@ $post->schedule($scheduleAt); //Saves the model in the database and returns bool
 ### 2. Unscheduling a model
 
 ```php
-$post = Post::find(1);
+$post = App\Post::find(1);
 $post->unscheduleWithoutSaving(); // Modifies the schedule_at attribute and returns the current model object without saving it.
 $post->unschedule(); //Saves the model in the database and returns boolean true or false
 ```
@@ -176,7 +176,7 @@ By default all those models are fetched in which the ```schedule_at``` column is
 
 So a eloquent query 
 ```php
-$posts = Post::get();
+$posts = App\Post::get();
 ``` 
 will return Toy Story 1 and Toy Story 2
 
@@ -186,7 +186,7 @@ will return Toy Story 1 and Toy Story 2
 To retrieve scheduled models in addition to the normal models, use the ```withScheduled()``` method.
 
 ```php
-$posts = Post::withScheduled()->get();
+$posts = App\Post::withScheduled()->get();
 ```
 
 The above query will return all the four rows in the above table.
@@ -196,10 +196,63 @@ The above query will return all the four rows in the above table.
 To retrieve only scheduled models use the ```onlyScheduled()``` method.
 
 ```php
-$posts = Post::onlyScheduled()->get();
+$posts = App\Post::onlyScheduled()->get();
 ```
 
 The above query will return Toy Story 3 and Terminator 2.
+
+#### 4. Do not apply any functionality provided by ```Schedulable```.
+
+In some cases you may not want to apply the ```Schedulable``` trait at all. In those cases use the ```withoutGlobalScope()``` method in your query.
+
+```php
+use Neelkanth\Laravel\Schedulable\Scopes\SchedulableScope;
+
+$posts = App\Post::withoutGlobalScope(SchedulableScope::class)->get();
+```
+
+## A General use case example.
+
+```
+use Illuminate\Support\Facades\Route;
+use Neelkanth\Laravel\Schedulable\Scopes\SchedulableScope;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/schedule/post', function () {
+    $post = new App\Post();
+    $post->title = "My scheduled post";
+    $scheduleAt = Carbon\Carbon::now()->addDays(10);
+    $post->schedule($scheduleAt);
+    return $post; //The Scheduled post's ID is 1
+});
+
+
+Route::get('/unschedule/post', function () {
+
+    // To unschedule a post you have to fetch the scheduled post first.
+    // But the Schedulable trait will not a fetch a post whose scheduled datetime is in future.
+    
+    $post = App\Post::find(1);  //This Will return null for a scheduled model.
+    
+    //To retreive a scheduled post use can use any of the two methods given below.
+
+    $post = App\Post::withScheduled()->find(1); //1. Using withScheduled() [Recommended]
+
+    $post = App\Post::withoutGlobalScope(SchedulableScope::class)->find(1); //2. Using withoutGlobalScope()
+    
+    $post->unschedule();
+});
+```
 
 
 ## Contributing
