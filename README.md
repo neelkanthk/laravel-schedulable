@@ -9,14 +9,19 @@
 
 # Laravel Schedulable [![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fneelkanthk%2Flaravel-schedulable)](https://twitter.com/intent/tweet?text=Laravel%20Schedulable:&url=https%3A%2F%2Fgithub.com%2Fneelkanthk%2Flaravel-schedulable)
 
-A Laravel package to add scheduling capability in Eloquent models.  
+## Salient Features:
 
-Some of the applications where this package can be used:  
+> 1. __Turn any Eloquent Model into a schedulable__ one by using ```Schedulable``` trait in the model.
+> 2. __Schedule Models to a time in future__ and they will be returned in query results at specified date and time.
+> 3. __Reschedule__ and __Unschedule__ at any time using simple methods.
+> 4. Hook into the model's life cycle via __custom model events__ provided by the package.
+> 5. __Override the default column name__ and use your own custom column name.
+
+__*Some example use cases when this package can be useful:*__
 
 1. A Blog like application which allows bloggers to schedule their post to go public on a future date and time.
 
 2. An E-commerce website where the items in the inventory can be added at any time from the admin panel but they can be scheduled to be made available to the customers at a particular date and time.
-
 
 ## Minimum Requirements
 
