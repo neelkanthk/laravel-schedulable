@@ -33,7 +33,7 @@ composer require neelkanthk/laravel-schedulable
 
 #### 1. Create a migration to add ```schedule_at``` column in any table using package's ```scheduleAt();``` method which creates a column with name ```schedule_at```.  
 
-#### *NOTE:* If you want to use any other column name then simply use the ```$table->timestamp('column_name');``` method.
+#### *NOTE:* If you want to use any other column name then simply use the ```$table->timestamp('column_name');``` method as shown below in examples.
 
 ```php
 use Illuminate\Database\Migrations\Migration;
@@ -52,7 +52,7 @@ class AddScheduleAtColumnInPosts extends Migration
         Schema::table('posts', function (Blueprint $table) {
             $table->scheduleAt(); //Using default schedule_at column
 			//or
-            $table->timestamp('scheduled_on', 0); //Using custom column name
+            $table->timestamp('publish_at', 0); //Using custom column name
         });
     }
 
@@ -66,7 +66,7 @@ class AddScheduleAtColumnInPosts extends Migration
         Schema::table('posts', function (Blueprint $table) {
             $table->dropColumn('schedule_at'); //Using default schedule_at column
             //or
-            $table->dropColumn('scheduled_on'); //Using custom column name
+            $table->dropColumn('publish_at'); //Using custom column name
         });
     }
 }
@@ -84,7 +84,7 @@ class Post extends Model
 {
     use Schedulable;
     
-    const SCHEDULE_AT = "scheduled_on"; //Specify the custom column name
+    const SCHEDULE_AT = "publish_at"; //Specify the custom column name
 }
 ```
 
