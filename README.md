@@ -1,9 +1,5 @@
 ![Laravel Schedulable Logo](https://github.com/neelkanthk/repo_logos/blob/master/LaravelSchedulable_small.png?raw=true)
 
-# Laravel Schedulable [![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fneelkanthk%2Flaravel-schedulable)](https://twitter.com/intent/tweet?text=Laravel%20Schedulable:&url=https%3A%2F%2Fgithub.com%2Fneelkanthk%2Flaravel-schedulable)
-
-A Laravel package to add scheduling capability in Eloquent models.  
-
 ![](https://img.shields.io/github/v/release/neelkanthk/laravel-schedulable?style=for-the-badge)
 ![](https://img.shields.io/packagist/php-v/neelkanthk/laravel-schedulable.svg?style=for-the-badge)
 ![](https://img.shields.io/badge/Laravel-%3E%3D6.0-red?style=for-the-badge)
@@ -11,12 +7,15 @@ A Laravel package to add scheduling capability in Eloquent models.
 ![](https://img.shields.io/github/issues/neelkanthk/laravel-schedulable?style=for-the-badge)
 ![](https://img.shields.io/github/license/neelkanthk/laravel-schedulable?style=for-the-badge)
 
+# Laravel Schedulable [![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fneelkanthk%2Flaravel-schedulable)](https://twitter.com/intent/tweet?text=Laravel%20Schedulable:&url=https%3A%2F%2Fgithub.com%2Fneelkanthk%2Flaravel-schedulable)
 
-There can be many use cases where this package can prove to be a huge time saver for developers.  
+A Laravel package to add scheduling capability in Eloquent models.  
+
+Some of the uses where this package can be used:  
 
 Suppose you are developing a Blog like application which gives the bloggers an option to schedule their content for a future date. Just relax! this package does all the work for you.
 
-Suppose in a E-commerce website, the items in the inventory can be added at any time by the backend team but they can be scheduled to be made available to the customers at a particular date and time.
+Suppose in a E-commerce website, the items in the inventory can be added at any time from the admin panel but they can be scheduled to be made available to the customers at a particular date and time.
 
 
 ## Minimum Requirements
@@ -51,9 +50,9 @@ class AddScheduleAtColumnInPosts extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->scheduleAt();
-            //or
-            $table->timestamp('scheduled_on', 0); //Custom column name
+            $table->scheduleAt(); //Using default schedule_at column
+			//or
+            $table->timestamp('scheduled_on', 0); //Using custom column name
         });
     }
 
@@ -65,16 +64,17 @@ class AddScheduleAtColumnInPosts extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropColumn('schedule_at');
+            $table->dropColumn('schedule_at'); //Using default schedule_at column
             //or
-            $table->dropColumn('scheduled_on'); //Custom column name
+            $table->dropColumn('scheduled_on'); //Using custom column name
         });
     }
 }
 ```
 
 #### 2. Use the ```Neelkanth\Laravel\Schedulable\Traits\Schedulable``` trait in any Model.  
-#### If you have used a custom column name in the migration then you have to specify that column in the Model also.
+
+#### If you have used a custom column name in the migration then you have to specify that column in the Model as shown below.
 
 ```php
 use Illuminate\Database\Eloquent\Model;
@@ -162,7 +162,7 @@ Suppose the current timestamp is 2020-10-15 00:00:00.
 
 #### 1. Default
 
-By default all the models are fetched in which the ```schedule_at``` column is having ```NULL``` value or a timestamp less than or equal to the current timestamp.
+By default all those models are fetched in which the ```schedule_at``` column is having ```NULL``` value or a timestamp less than or equal to the current timestamp.
 
 So a eloquent query 
 ```php
@@ -173,7 +173,7 @@ will return Toy Story 1 and Toy Story 2
 
 #### 2. Retrieving scheduled models in addition to the normal.
 
-To retrieve scheduled models in addition to the normal models use the ```withScheduled()``` scope.
+To retrieve scheduled models in addition to the normal models, use the ```withScheduled()``` method.
 
 ```php
 $posts = Post::withScheduled()->get();
@@ -181,9 +181,9 @@ $posts = Post::withScheduled()->get();
 
 The above query will return all the four rows in the above table.
 
-#### 2. Retrieving only scheduled models without normal.
+#### 3. Retrieving only scheduled models without normal.
 
-To retrieve only scheduled models use the ```onlyScheduled()``` scope.
+To retrieve only scheduled models use the ```onlyScheduled()``` method.
 
 ```php
 $posts = Post::onlyScheduled()->get();
