@@ -12,10 +12,15 @@
 ## Salient Features:
 
 1. __Turn any Eloquent Model into a schedulable__ one by using ```Schedulable``` trait in the model.
+
 2. __Schedule Models to a time in future__ and they will be returned in query results at specified date and time.
+
 3. __Reschedule__ and __Unschedule__ at any time using simple methods.
+
 4. Hook into the model's life cycle via __custom model events__ provided by the package.
+
 5. __Override the default column name__ and use your own custom column name.
+
 
 __*Some example use cases when this package can be useful:*__
 
