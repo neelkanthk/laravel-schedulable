@@ -211,9 +211,10 @@ use Neelkanth\Laravel\Schedulable\Scopes\SchedulableScope;
 $posts = App\Post::withoutGlobalScope(SchedulableScope::class)->get();
 ```
 
-## A General use case example.
+## A general use case example.
 
 ```
+// routes/web.php
 use Illuminate\Support\Facades\Route;
 use Neelkanth\Laravel\Schedulable\Scopes\SchedulableScope;
 
@@ -233,16 +234,16 @@ Route::get('/schedule/post', function () {
     $post->title = "My scheduled post";
     $scheduleAt = Carbon\Carbon::now()->addDays(10);
     $post->schedule($scheduleAt);
-    return $post; //The Scheduled post's ID is 1
+    return $post; //The scheduled post's ID is 1
 });
 
 
 Route::get('/unschedule/post', function () {
 
     // To unschedule a post you have to fetch the scheduled post first.
-    // But the Schedulable trait will not a fetch a post whose scheduled datetime is in future.
+    // But since the Schedulable trait is used in App\Post model it will not a fetch a post whose schedule_at value is in future.
     
-    $post = App\Post::find(1);  //This Will return null for a scheduled model.
+    $post = App\Post::find(1);  //This will return null for a scheduled post whose id is 1.
     
     //To retreive a scheduled post use can use any of the two methods given below.
 
