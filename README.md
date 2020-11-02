@@ -9,7 +9,7 @@
 
 # Laravel Schedulable [![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fneelkanthk%2Flaravel-schedulable)](https://twitter.com/intent/tweet?text=Laravel%20Schedulable:&url=https%3A%2F%2Fgithub.com%2Fneelkanthk%2Flaravel-schedulable)
 
-# Schedule and Unschedule any eloquent model elegantly without cron job.
+## Schedule and Unschedule any eloquent model elegantly without cron job.
 
 ## Salient Features:
 
