@@ -266,7 +266,7 @@ If you discover any security-related issues, please email me.neelkanth@gmail.com
 
 ## Credits
 
-- [Neelkanth Kaushik](https://github.com/username)
+- [Neelkanth Kaushik](https://github.com/neelkanthk)
 - [All Contributors](../../contributors)
 
 ## License
