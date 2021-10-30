@@ -16,6 +16,11 @@ trait Schedulable
         static::addGlobalScope(new SchedulableScope());
     }
 
+    /**
+     * Initialize the package and register the events
+     *
+     * @return void
+     */
     public function initializeSchedulable()
     {
         $this->dates[] = $this->getScheduleAtColumn();
@@ -28,6 +33,8 @@ trait Schedulable
     }
 
     /**
+     * Set the scheduled_at column value
+     * 
      * @param $datetime
      */
     public function setScheduleAtAttribute($datetime)
